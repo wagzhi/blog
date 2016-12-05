@@ -5,11 +5,11 @@ date:   2016-12-05 22:17:55 +0800
 categories: hbase
 ---
 
-##Create 
+## Create 
 创建表命令
-```shell
+{% highlight scala %} 
 create 'book' , 'info'
-```
+{% endhighlight %}
 
 ## Alter
 修改表命令
@@ -17,7 +17,7 @@ create 'book' , 'info'
 alter 'book' ,  {NAME=>'chapters',VERSIONS=>5}
 ```
 
-##Put
+## Put
 添加、修改数据
 ```shell 
 put 'book', '001_ISBN9781491941959','info:date', 12345678
@@ -52,7 +52,7 @@ put 'book','003_ISBN9781491915813' ,'chapters:content_001' ,'{"Content":"<html><
 
 ```
 
-##San
+## San
 查询
 PrefixFilter
 ColumnPrefixFilter
@@ -75,7 +75,7 @@ scan 'book', {FILTER => "ColumnRangeFilter ('subject_003', true, 'subject_003',f
 scan 'book', {FILTER => "(FamilyFilter (=,'binary:info')) OR (ColumnRangeFilter ('subject_001', true, 'subject_003',false))"}
 ```
 
-##Truncate
+## Truncate
  清空表数据
 ```shell
  truncate 'book'
