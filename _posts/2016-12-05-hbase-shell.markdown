@@ -19,7 +19,7 @@ alter 'book' ,  {NAME=>'chapters',VERSIONS=>5}
 
 ## Put
 添加、修改数据
-```shell 
+{% highlight shell %} 
 put 'book', '001_ISBN9781491941959','info:date', 12345678
 put 'book', '001_ISBN9781491941959','info:author','Caleb Doxsey'
 put 'book', '001_ISBN9781491941959','info:name','Introducing Go'
@@ -50,7 +50,7 @@ put 'book', '003_ISBN9781491915813','chapters:subject_003', 'Troubleshooting'
 put 'book', '003_ISBN9781491915813','chapters:subject_004', 'Extending Your App'
 put 'book','003_ISBN9781491915813' ,'chapters:content_001' ,'{"Content":"<html></html>"}'
 
-```
+{% endhighlight %}
 
 ## San
 查询
@@ -59,7 +59,7 @@ ColumnPrefixFilter
 FamilyFilter
 QualifierFilter
 
-```
+{% highlight shell %} 
 scan 'book', {FILTER => " PrefixFilter ('001')", LIMITS=>2}
 
 scan 'book', {FILTER => " (PrefixFilter ('00')) AND (FamilyFilter (=,'binary:info')) "}
@@ -73,10 +73,10 @@ scan 'book', {FILTER => "(PrefixFilter ('003')) AND (FamilyFilter (=,'binary:cha
 scan 'book', {FILTER => "ColumnRangeFilter ('subject_003', true, 'subject_003',false)"}
 
 scan 'book', {FILTER => "(FamilyFilter (=,'binary:info')) OR (ColumnRangeFilter ('subject_001', true, 'subject_003',false))"}
-```
+{% endhighlight %}
 
 ## Truncate
  清空表数据
-```shell
+{% highlight shell %} 
  truncate 'book'
-```
+{% endhighlight %}
