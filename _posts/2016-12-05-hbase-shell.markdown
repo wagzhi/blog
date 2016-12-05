@@ -7,15 +7,15 @@ categories: hbase
 
 ## Create 
 创建表命令
-{% highlight scala %} 
+{% highlight shell %} 
 create 'book' , 'info'
 {% endhighlight %}
 
 ## Alter
 修改表命令
-```shell 
+{% highlight shell %} 
 alter 'book' ,  {NAME=>'chapters',VERSIONS=>5}
-```
+{% endhighlight %}
 
 ## Put
 添加、修改数据
