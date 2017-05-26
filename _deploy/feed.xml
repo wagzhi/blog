@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.3.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-05-26T11:03:58+08:00</updated><id>/</id><title type="html">Paul Wang</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><entry><title type="html">解决Nginx在mac下防火墙问题</title><link href="/2017/05/26/nginx-macos.html" rel="alternate" type="text/html" title="解决Nginx在mac下防火墙问题" /><published>2017-05-26T00:00:00+08:00</published><updated>2017-05-26T00:00:00+08:00</updated><id>/2017/05/26/nginx-macos</id><content type="html" xml:base="/2017/05/26/nginx-macos.html">&lt;p&gt;##问题
+Mac下安装nginx后，本机通过127.0.0.1能正常访问。但是局域网内别的主机通过ip如192.168.0.10访问，就会被防火墙挡住。关闭防护墙后访问正常。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在访问墙配置中，加入nginx允许访问列表，发现无效。（注意如果已经加入的话，要在去掉）&lt;/li&gt;
+  &lt;li&gt;执行命令&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; 
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --add /usr/local/nginx/sbin/nginx
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --unblockapp /usr/local/nginx/sbin/nginx&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;检查ngnix是否已经加入列表：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt; 
+sudo /usr/libexec/ApplicationFirewall/socketfilterfw --list&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;重启ngix(不要用reload)：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;sudo /usr/local/nginx/sbin/nginx -s stop
+sudo /usr/local/nginx/sbin/nginx&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><category term="nginx" /><category term="macos" /><summary type="html">##问题 Mac下安装nginx后，本机通过127.0.0.1能正常访问。但是局域网内别的主机通过ip如192.168.0.10访问，就会被防火墙挡住。关闭防护墙后访问正常。</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="/jekyll/update/2016/12/05/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2016-12-05T09:48:55+08:00</published><updated>2016-12-05T09:48:55+08:00</updated><id>/jekyll/update/2016/12/05/welcome-to-jekyll</id><content type="html" xml:base="/jekyll/update/2016/12/05/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Scala反射</title><link href="/2015/09/24/scala-reflection.html" rel="alternate" type="text/html" title="Scala反射" /><published>2015-09-24T00:00:00+08:00</published><updated>2015-09-24T00:00:00+08:00</updated><id>/2015/09/24/scala-reflection</id><content type="html" xml:base="/2015/09/24/scala-reflection.html">&lt;p&gt;本文翻译自&lt;a href=&quot;http://docs.scala-lang.org/overviews/reflection/overview.html&quot;&gt;Scala Reflection&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;概述&quot;&gt;概述&lt;/h2&gt;
+
+&lt;h3 id=&quot;heather-miller-eugene-burmako-philipp-haller&quot;&gt;Heather Miller, Eugene Burmako, Philipp Haller&lt;/h3&gt;
+&lt;p&gt;反射是程序去检查、甚至改变自己的能力。它的历史贯穿面向对象、函数式编程和逻辑编程范式。一些语言把反射作为指导原则，并不断改进其反射的能力。&lt;/p&gt;
+
+&lt;p&gt;反射涉及到将程序中的隐式元素具体化的能力。这些元素包含静态程序元素如类、方法、表达式，也包含动态元素，如当前的协程（Continuation)或者执行事件如方法调用、属性访问等。通常区别编译时（compile-time)反射和运行时（runtime）反射是依据反射执行的时间。编译时反射是开发代码转换和生产程序的强大方式，而运行时反射典型使用是在语义适应或者模块间的延迟绑定。&lt;/p&gt;
+
+&lt;p&gt;直到2.10，Scala没有自身的反射能力。而通过Java反射API获得动态检测类和对象，并访问它们的成员的能力。但是，许多Scala特有的元素仅通过Java反射是无法发现的，Java反射只能发现Java元素（没有functions和traits）和类型（没有existential，higher-kinded，path-dependent和abtract types）。另外，Java反射也不能发现编译时泛型的Java类型的运行时运行信息；这是对于Scala泛型反射的限制。&lt;/p&gt;
+
+&lt;p&gt;在Scala 2.10，新引入的反射类库不仅Java运行时反射对Scala特有类型和泛型的缺陷，而且还为Scala提供了拥有强大的通用反射能力的工具包。不仅为Scala类型和泛型提供了功能齐全的运行时反射，Scala 2.10还通过&lt;a href=&quot;http://docs.scala-lang.org/overviews/macros/overview.html&quot;&gt;marcros&lt;/a&gt;的形式提供了编译时反射能力，以及实例化Scala表达式为抽象语法树的能力。&lt;/p&gt;
+
+&lt;h3 id=&quot;运行时反射&quot;&gt;运行时反射&lt;/h3&gt;
+
+&lt;p&gt;什么是运行时反射？ 在运行时给定一个类型或者一个对象实例，反射可以：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;检测对象的类型，包括泛型。&lt;/li&gt;
+  &lt;li&gt;实例化一个新对象。&lt;/li&gt;
+  &lt;li&gt;访问或者调用对象的成员。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;让我们通过一些例子来看看以上功能是如何实现的。&lt;/p&gt;
+
+&lt;h4 id=&quot;例子&quot;&gt;例子&lt;/h4&gt;
+
+&lt;h5 id=&quot;检测运行时类型包括运行时泛型&quot;&gt;检测运行时类型（包括运行时泛型）&lt;/h5&gt;
+
+&lt;p&gt;和其他JVM语言一样，Scala类型会在编译时被清除。也就是说，如果你在运行时去检测一个实例的类型，你可能无法访问所以Scala的所有编译时类型信息。&lt;/p&gt;
+
+&lt;p&gt;TypeTags是一种承载所以类型信息的对象，在编译时和运行时都可用。需要指出的事TypeTags总是在编译时产生的。当隐式参数或者上下文绑定需要TypeTags被使用时会触发TypeTags生成。&lt;/p&gt;
+
+&lt;p&gt;下面例子使用上下文绑定：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt; 
+
+&lt;span class=&quot;n&quot;&gt;scala&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scala.reflect.runtime.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;universe&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ru&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scala.reflect.runtime.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;universe&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ru&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;scala&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;scala&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getTypeTag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;T:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ru.TypeTag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ru&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;typeTag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;getTypeTag&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;obj:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;implicit&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;evidence$1:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ru.TypeTag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ru&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TypeTag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;scala&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theType&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getTypeTag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tpe&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;theType&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;ru.Type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;首先&lt;code class=&quot;highlighter-rouge&quot;&gt;import scala.reflect.runtime.universe&lt;/code&gt;（必须先导入以便使用TypeTag），然后定义一个类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;List[Int]&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;l&lt;/code&gt;。然后我们定义一个方法a&lt;/p&gt;</content><author><name></name></author><category term="scala" /><category term="reflection" /><summary type="html">本文翻译自Scala Reflection</summary></entry></feed>
